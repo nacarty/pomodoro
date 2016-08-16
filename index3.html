@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Pomodoro Clock</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel='stylesheet' href="main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src = 'main.js'></script>
+    <script>
+        $(document).ready(function()
+        {
+           svgNumberClock(0);        
+        }); 
+   </script>
+    </head>
+    <body id = 'theBody'>
+        <P id='theTitle'><span id='span1'>POMO</span><span id='span2'>DORO</span></p>
+        <div id ="svgDiv">             
+        </div>   
+        <div id="seg2">
+        <div id="sliderDiv">
+            <input id="slider" type ="range" min="200" max="800" step="10" value="400" onmouseup='resizeSVG(this.value)'>
+        </div>
+         <div id="settingsWrapper">
+          <span id="session" class="settings">
+            <input class="label" id='sessBtn' type='button' value='SESSION' onclick='getUserTime(0, sessionHour.value, sessionMinute.value,breakHour.value, breakMinute.value)' title="Click to reset Session!"><br>
+            <input id = 'sessionHour' type = "number" min="0" max="59" value="0" title="Enter Hours(0-59)">H :
+            <input id = 'sessionMinute' type = "number" min="0" max="59" value="2" title="Enter Minutes(0-59)">M
+          </span>
+          <span id="break" class="settings">
+            <input class="label" id='brkBtn' type='button' value='BREAK' onclick='getUserTime(1, sessionHour.value, sessionMinute.value,breakHour.value, breakMinute.value)' title="Click to reset Break!"><br>
+            <input id = 'breakHour' type = "number" min="0" max="59" value="0" title="Enter Hours(0-59)">H :
+            <input id = 'breakMinute' type = "number" min="0" max="59"  value="1" title="Enter Minutes(0-59)">M
+          </span>
+        </div>
+        </div>
+   </body>
+    
+</html>

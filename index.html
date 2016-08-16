@@ -12,6 +12,8 @@
     <script>
         $(document).ready(function()
         {
+           sound = document.getElementById('alarm');
+           sound.load();
            svgNumberClock(0);        
         }); 
    </script>
@@ -23,6 +25,10 @@
         <div id="seg2">
         <div id="sliderDiv">
             <input id="slider" type ="range" min="200" max="800" step="10" value="400" onmouseup='resizeSVG(this.value)'>
+            <audio id="alarm" controls preload="auto">
+               <source src="bellalarm1.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+            </audio>
         </div>
          <div id="settingsWrapper">
          <div id="session" class="settings">
@@ -41,6 +47,7 @@
         </div>
         </div>
         </div>
+        
    </body>
     
 </html>

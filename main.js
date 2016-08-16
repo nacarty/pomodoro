@@ -218,7 +218,7 @@ function svgNumberClock(origin)//origin = 0 or 1 for initial call or call from r
         
         return d;      
     }
-    
+    var sound; //set in document ready function;
     function syncTime(){
         var t = new Date();
         tempTimeElapsed = t - time;
@@ -239,12 +239,18 @@ function svgNumberClock(origin)//origin = 0 or 1 for initial call or call from r
         if (workPeriod)
         {            
            if (tempTimeElapsed >= workDuration)
+           {
+                playSound();
                 reset(1);
+            }
         }
         else 
         {
             if (tempTimeElapsed >= breakDuration)
+            {
+                playSound();
                 reset(0);
+            }
         }
     }
     
@@ -305,8 +311,7 @@ function svgNumberClock(origin)//origin = 0 or 1 for initial call or call from r
     }
     
     function getUserTime(which, sessHr, sessMin, brkHr, brkMin)
-    {
-        console.log('Here\s the information: ',sessHr,' ',sessMin,' ', brkHr,' ', brkMin );
+    {        
         if ( validInput( parseInt(sessHr), parseInt(sessMin), parseInt(brkHr), parseInt(brkMin) ) )
         {   colorMark(workDuration/60000, fgColor, 0);
             colorMark(breakDuration/60000, fgColor, 0);
@@ -328,7 +333,6 @@ function svgNumberClock(origin)//origin = 0 or 1 for initial call or call from r
     function validInput(sessHr, sessMin, brkHr, brkMin)
     {
      var valid = false;
-     console.log('Is this an integer?: ',sessHr," ",Number.isInteger(sessHr));
        if (Number.isInteger(sessHr)&&Number.isInteger(sessMin)&&Number.isInteger(brkHr)&&Number.isInteger(brkMin))
          if ( (sessHr>=0)&&(sessMin>=0)&&(brkHr>=0)&&(brkMin>=0)  )         
            if ( (sessHr<60)&&(sessMin<60)&&(brkHr<60)&&(brkMin<60)  )
@@ -352,10 +356,30 @@ function svgNumberClock(origin)//origin = 0 or 1 for initial call or call from r
       svgCir3 = {x:SVG.w/2, y:SVG.h/2, r:(SVG.w/2 - ep*2 - svgOffset*1.8) };
       $('svg').remove();
       $('#svgDiv').css('width', ''+width+'px');
+      //console.log('Papppppp',''+width+'px');
       svgNumberClock(1);
       if (workPeriod)
            colorMark(tempDuration/60000, workColor,1);
        else
            colorMark(tempDuration/60000, breakColor,1);
           
+  }
+  
+  var sound;
+  
+  function playSound()
+  {
+    
+     sound.muted=false;
+     sound.paused=false;
+     sound.ended = false;
+     sound.async = true;
+     sound.volume = 1;
+     if ((sound.error !== null)&&(sound.error !== 4))
+     {
+         sound.load();
+     }
+     sound.play();
+     console.log('The sound networkstate: ', sound.networkState);
+     console.log('Paused:',sound.paused,' Played:', sound.played,' Ended:', sound.ended, ' Error:', sound.error,' Muted:',sound.muted);
   }

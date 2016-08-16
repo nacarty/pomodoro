@@ -24,7 +24,7 @@
         <div id="sliderDiv">
             <input id="slider" type ="range" min="200" max="800" step="10" value="400" onmouseup='resizeSVG(this.value)'>
         </div>
-
+         <div id="settingsWrapper">
          <div id="session" class="settings">
           <span>
             <input class="label" id='sessBtn' type='button' value='SESSION' onclick='getUserTime(0, sessionHour.value, sessionMinute.value,breakHour.value, breakMinute.value)' title="Click to reset Session!"><br>
@@ -38,6 +38,7 @@
             <input id = 'breakHour' type = "number" min="0" max="59" value="0" title="Enter Hours(0-59)">H :
             <input id = 'breakMinute' type = "number" min="0" max="59"  value="1" title="Enter Minutes(0-59)">M
           </span>
+        </div>
         </div>
         </div>
    </body>

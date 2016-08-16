@@ -33,14 +33,16 @@ p{
 #seg2{
     text-align: center;
 }
+#settingsWrapper{
+    display:inline;
+}
 .settings{
     width:180px;
-    display:inline-block;
     text-align: center;
     padding-top: 6px;
     padding-bottom: 8px;
     box-shadow: 5px 8px 20px 1px rgba(0, 0, 0, 0.5), inset -1px -4px 8px 0.1px #777777; 
-	display:inline-block;
+    display:inline-block;
 }
 .label{
     font-size:20px;

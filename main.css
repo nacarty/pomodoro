@@ -34,7 +34,7 @@ p{
     text-align: center;
 }
 #settingsWrapper{
-    display:inline;
+    display:inline-block;
 }
 .settings{
     width:180px;

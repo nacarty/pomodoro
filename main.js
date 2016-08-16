@@ -48,7 +48,7 @@ var svgCir3 = {x:SVG.w/2, y:SVG.h/2, r:(SVG.w/2 - ep*2 - svgOffset*1.8) };
  * earlier are in the background whereas items drawn later are in the foreground.
  *****************************************************************************************/
 
-function svgNumberClock(origin)
+function svgNumberClock(origin)//origin = 0 or 1 for initial call or call from resize()
 {
     var x, y,x1,y1,x2,y2,
         theta, PI = Math.PI,
@@ -339,6 +339,7 @@ function svgNumberClock(origin)
   
   function resizeSVG(s)
   {
+      var width = parseInt(s)+20;
       SVG.w = s;
       SVG.h = s;
       svgOffset = 33*(SVG.w/300); //the difference in radii of circle1 and circle 2
@@ -350,6 +351,7 @@ function svgNumberClock(origin)
       svgCir2 = {x:SVG.w/2, y:SVG.h/2, r:(SVG.w/2 - ep*2 - svgOffset) };
       svgCir3 = {x:SVG.w/2, y:SVG.h/2, r:(SVG.w/2 - ep*2 - svgOffset*1.8) };
       $('svg').remove();
+      $('#svgDiv').css('width', ''+width+'px');
       svgNumberClock(1);
       if (workPeriod)
            colorMark(tempDuration/60000, workColor,1);
